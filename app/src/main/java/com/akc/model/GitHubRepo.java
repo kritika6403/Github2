@@ -13,6 +13,9 @@ public class GitHubRepo {
     @SerializedName("language")
     private String language;
 
+    @SerializedName("owner")
+    private  String owner;
+
     @SerializedName("fullname")
     private String fullname;
 
@@ -23,11 +26,21 @@ public class GitHubRepo {
     public GitHubRepo(
             String language,
             String description,
+            String owner,
             String name) {
 
         this.setLanguage(language);
         this.setDescription(description);
         this.setName(name);
+        this.setOwner(owner);
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public String getName() {

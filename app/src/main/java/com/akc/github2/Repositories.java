@@ -48,6 +48,7 @@ public class Repositories extends AppCompatActivity implements ReposAdapter.OneN
         extras = getIntent().getExtras();
         repoName = extras.getString("STRING_I_NEED");
 
+
         mRecyclerView=  findViewById(R.id.repos_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapter = new ReposAdapter(myDataSource, R.layout.list_item_repo,
@@ -66,7 +67,6 @@ public class Repositories extends AppCompatActivity implements ReposAdapter.OneN
         call.enqueue(new Callback<List<GitHubRepo>>() {
             @Override
             public void onResponse(Call<List<GitHubRepo>> call, Response<List<GitHubRepo>> response) {
-
                 myDataSource.clear();
                 myDataSource.addAll(response.body());
                 myAdapter.notifyDataSetChanged();
@@ -83,6 +83,7 @@ public class Repositories extends AppCompatActivity implements ReposAdapter.OneN
 
     @Override
     public void onNoteClick(int position) {
+
     }
 }
 

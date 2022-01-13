@@ -28,6 +28,7 @@ public class Issues extends AppCompatActivity {
     List<GitHubIssues> mIssues = new ArrayList<>();
     RecyclerView.Adapter adapter;
     private String reposName;
+    private String owner;
 
 
     @Override
@@ -39,7 +40,8 @@ public class Issues extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         receivedUserName = extras.getString("username");
-        reposName = extras.getString("repos");
+        reposName = extras.getString("repo");
+        owner = extras.getString("owner");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new IssuesAdapter(mIssues, R.layout.list_item_issues,getApplicationContext());
@@ -51,7 +53,7 @@ public class Issues extends AppCompatActivity {
         GitHubIssuesEndPoint apiService =
                 APIClient.getClient().create( GitHubIssuesEndPoint.class);
 
-        Call<List<GitHubIssues>> call = apiService.getIssues(receivedUserName,reposName);
+        Call<List<GitHubIssues>> call = apiService.getIssues(owner,reposName);
         call.enqueue(new Callback<List<GitHubIssues>>() {
 
             @Override
@@ -66,7 +68,6 @@ public class Issues extends AppCompatActivity {
                 // Log error here since request failed
                 Log.e("Issues", t.toString());
             }
-
         });
     }
 }

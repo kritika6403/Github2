@@ -29,6 +29,7 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ReposViewHol
     private OneNoteListener moneNoteListener;
 
 
+
     public ReposAdapter(List<GitHubRepo> repos, int rowLayout, Context context,OneNoteListener moneNoteListener) {
         this.repos= repos;
         this.rowLayout=rowLayout;
@@ -56,6 +57,7 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ReposViewHol
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(),Issues.class);
                 i.putExtra("repo",holder.repoName.getText().toString());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 view.getContext().startActivity(i);
 
             }
