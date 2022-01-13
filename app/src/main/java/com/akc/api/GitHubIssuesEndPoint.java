@@ -10,6 +10,6 @@ import retrofit2.http.Path;
 
 public interface GitHubIssuesEndPoint {
     @GET("/repos/{owner}/{repo}/issues")
-    Call<List<GitHubIssues>> getIssues(@Path("owner") String owner, @Path("repo") String repository);
+    Call<List<GitHubIssues>> getIssues(@Path("user") String owner, @Path("repo") String repository);
 
 }

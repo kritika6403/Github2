@@ -20,12 +20,13 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssueViewH
     private final List<GitHubIssues> issues;
     private int rowLayout;
     private Context context;
-    private OneNoteListener moneNoteListener;
 
-    public IssuesAdapter(List<GitHubIssues> issues, int rowLayout, Context context,  OneNoteListener moneNoteListener;) {
+
+    public IssuesAdapter(List<GitHubIssues> issues, int rowLayout, Context context) {
         this.issues = issues;
         this.rowLayout = rowLayout;
         this.context = context;
+
     }
 
     @NonNull
@@ -57,7 +58,5 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssueViewH
 
         }
     }
-    public  interface OneNoteListener(){
-        
-    }
+
 }

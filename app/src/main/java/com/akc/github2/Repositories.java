@@ -23,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Repositories extends AppCompatActivity {
+public class Repositories extends AppCompatActivity implements ReposAdapter.OneNoteListener {
 
     String receivedUserName;
     TextView userNameTV;
@@ -51,7 +51,7 @@ public class Repositories extends AppCompatActivity {
         mRecyclerView=  findViewById(R.id.repos_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapter = new ReposAdapter(myDataSource, R.layout.list_item_repo,
-                getApplicationContext());
+                getApplicationContext(),this::onNoteClick);
         mRecyclerView.setAdapter(myAdapter);
 
         loadRepositories();
@@ -79,6 +79,10 @@ public class Repositories extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    public void onNoteClick(int position) {
     }
 }
 
